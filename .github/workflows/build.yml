@@ -16,12 +16,20 @@ jobs:
 
       # Step 2: Install MinGW
       - name: Install MinGW
-        run: choco install mingw curl
+        run: choco install mingw
+
+
+
+
+      - name: Download libcurl
+        run: |
+          curl -LO https://curl.se/download/curl-8.11.1.zip
+          unzip curl-8.11.1.zip -d libcurl
 
       # Step 3: Compile the program
       - name: Build Executable
         run: |
-          gcc -o webhook_send.exe webhook_send.c -L. -lcurl -lws2_32 -lwldap32
+          gcc -o webhook_send.exe webhook_send.c -Ilibcurl/include -Llibcurl/lib -lcurl
 
 
       - name: test
