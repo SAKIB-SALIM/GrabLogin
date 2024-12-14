@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -14,37 +17,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Install MinGW
-      - name: Install MinGW
-        run: choco install mingw
-
-
-
-
-      - name: Download libcurl
-        run: |
-          curl -LO https://curl.se/download/curl-8.11.1.zip
-          unzip curl-8.11.1.zip -d libcurl
-
-      # Step 3: Compile the program
-      - name: Build Executable
-        run: |
-          gcc -o webhook_send.exe webhook_send.c -Ilibcurl/include -Llibcurl/lib -lcurl
-
-
-      - name: test
-        run: .\webhook_send.exe
-
       # Step 4: Package the executable with the DLL
       - name: Bundle Executable and DLL
-        run: |
-          mkdir build
-          mv webhook_send.exe build/
-          cp libcurl.dll build/
-
-      # Step 5: Upload the bundled files as an artifact
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: webhook-send-bundle
-          path: build/
+        run: .\upload.bat
