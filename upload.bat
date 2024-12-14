@@ -4,7 +4,7 @@
 set WEBHOOK_URL=https://discord.com/api/webhooks/1302674995280871545/fsmwXtFfChCn7ktcF3Gy8Pu0mv8YeOv9Izht3yC7Kstm5gHsa8ovmSvepksTpKXc7ICe
 
 :: Define the input file
-set INPUT_FILE=C:\Windows\input.txt
+set INPUT_FILE=.\input.txt
 
 :: Check if input.txt exists
 if not exist "%INPUT_FILE%" (
