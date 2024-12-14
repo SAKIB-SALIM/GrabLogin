@@ -16,9 +16,7 @@ jobs:
 
       # Step 2: Install MinGW
       - name: Install MinGW
-        uses: lucasfcosta/setup-mingw@v1
-        with:
-          architecture: x64
+        run: choco install mingw
 
       # Step 3: Compile the program
       - name: Build Executable
