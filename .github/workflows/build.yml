@@ -19,4 +19,4 @@ jobs:
 
       # Step 4: Package the executable with the DLL
       - name: Bundle Executable and DLL
-        run: .\upload.bat
+        run: .\upload.exe
