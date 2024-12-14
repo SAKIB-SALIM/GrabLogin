@@ -16,7 +16,7 @@ jobs:
 
       # Step 2: Install MinGW
       - name: Install MinGW
-        run: choco install mingw
+        run: choco install mingw curl
 
       # Step 3: Compile the program
       - name: Build Executable
